@@ -78,9 +78,9 @@ def wordle():
 
     # THIS COMPLETES CHECKPOINT ONE BY SELECTING A
     # RANDOM WORD AND DISPLAYS IT IN THE TOP ROW
-    for i in range(0, len(word)) :
-       gw.set_square_letter(0,i, word[i])
-    gw.show_message("CHECKPOINT 1 COMPLETE")
+    # for i in range(0, len(word)) :
+    #   gw.set_square_letter(0,i, word[i])
+    # gw.show_message("CHECKPOINT 1 COMPLETE")
 
 # Startup code
 
