@@ -69,7 +69,15 @@ def wordle():
             # MOVE TO NEXT ROW
             gw.set_current_row(row + 1)
         else :
+            # ALL LETTERS WILL RESET
+            for i in range(0, N_COLS) :
+                gw.set_square_letter(row,i," ")
+                gw.set_current_row(row)
+            
+            # DISPLAY NOT IN WORD LIST ERROR MESSAGE 
+            # IF THE USER INPUTS AN INCORRECT WORD
             gw.show_message("Not in word list.")
+
         
 
     # THIS WILL CREATE THE WINDOW AND ADD A LISTENER
