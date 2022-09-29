@@ -18,7 +18,6 @@ def wordle():
     # print(word)
 
     def enter_action(s):
-        '''
         row = gw.get_current_row()
         print("row " + str(row))
         guess = ""
@@ -50,6 +49,8 @@ def wordle():
         # WEATHER THE WORD IS IN THE WORD BANK OR NOT
         elif guess.lower() in FIVE_LETTER_WORDS :
             gw.show_message("Good guess! That is in the word list.")
+
+            '''
             grade = ""
             for i in range(0, N_COLS) :
                 if guess[i] == word[i]:
@@ -63,12 +64,13 @@ def wordle():
             for i in range(0, N_COLS) :
                 if (grade[i] in word):
                     gw.set_square_color(row,i,PRESENT_COLOR)
+            '''
 
             # MOVE TO NEXT ROW
             gw.set_current_row(row + 1)
         else :
             gw.show_message("Not in word list.")
-        '''
+        
 
     # THIS WILL CREATE THE WINDOW AND ADD A LISTENER
     gw = WordleGWindow()
