@@ -8,7 +8,7 @@ BE SURE TO UPDATE THIS COMMENT WHEN YOU WRITE THE CODE.
 import random
 
 from WordleDictionary import FIVE_LETTER_WORDS
-from WordleGraphics import CORRECT_COLOR, PRESENT_COLOR, WordleGWindow, N_COLS, N_ROWS
+from WordleGraphics import CORRECT_COLOR, PRESENT_COLOR, MISSING_COLOR, WordleGWindow, N_COLS, N_ROWS
 
 def wordle():
     # THIS ASSIGNES A RANDOM WORD
@@ -26,6 +26,7 @@ def wordle():
         for i in range(0, N_COLS) :
             if guess[i] == word[i]:
                 gw.set_square_color(row,i,CORRECT_COLOR)
+                gw.set_key_color(guess[i], CORRECT_COLOR)
                 if word.count(guess[i]) == 1:
                     guessed += guess[i]
 
@@ -34,6 +35,18 @@ def wordle():
         for i in range(0, N_COLS) :
             if (guess[i] in word) and (guess[i] not in guessed) and (guess[i] != word[i]):
                 gw.set_square_color(row,i,PRESENT_COLOR)
+                if word.count(guess[i]) == 1:
+                    guessed += guess[i]
+                if (gw.get_key_color(guess[i]) == CORRECT_COLOR):
+                    pass
+                else:
+                    gw.set_key_color(guess[i], PRESENT_COLOR)
+
+        # IF LETTER IS NOT IN THE WORD, CHANGE
+        # KEY TO GRAY
+        for i in range(0, N_COLS) :
+            if (guess[i] not in word) :
+                gw.set_key_color(guess[i],MISSING_COLOR)
                 if word.count(guess[i]) == 1:
                     guessed += guess[i]
 
