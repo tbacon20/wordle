@@ -26,7 +26,8 @@ def wordle():
         for i in range(0, N_COLS) :
             if guess[i] == word[i]:
                 gw.set_square_color(row,i,CORRECT_COLOR)
-                guessed += guess[i]
+                if word.count(guess[i]) == 1:
+                    guessed += guess[i]
 
         # CHECK FOR CORRECT LETTERS IN THE WRONG
         # PLACE AND TURN THEM YELLOW
