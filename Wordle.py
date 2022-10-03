@@ -32,9 +32,9 @@ def wordle():
         # CHECK FOR CORRECT LETTERS IN THE WRONG
         # PLACE AND TURN THEM YELLOW
         for i in range(0, N_COLS) :
-            if (guess[i] in word) and (guess[i] not in guessed):
+            if (guess[i] in word) and (guess[i] not in guessed) and (guess[i] != word[i]):
                 gw.set_square_color(row,i,PRESENT_COLOR)
-                if word.count(guess[i]) == 1 and (guess[i] != word[i]):
+                if word.count(guess[i]) == 1:
                     guessed += guess[i]
 
     def enter_action(s):
