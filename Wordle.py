@@ -17,6 +17,24 @@ def wordle():
     # THIS CAN BE USED FOR TESTING
     print(word)
 
+    def check_letters(row, guess) :
+        # INITIATE A STRING OF ALL GUESSED LETTERS
+        guessed = ""
+
+        # CHECK FOR LETTERS IN THE CORRECT PLACE
+        # AND TURN THEM GREEN
+        for i in range(0, N_COLS) :
+            if guess[i] == word[i]:
+                gw.set_square_color(row,i,CORRECT_COLOR)
+                guessed += guess[i]
+
+        # CHECK FOR CORRECT LETTERS IN THE WRONG
+        # PLACE AND TURN THEM YELLOW
+        for i in range(0, N_COLS) :
+            if (guess[i] in word) and (guess[i] not in guessed):
+                gw.set_square_color(row,i,PRESENT_COLOR)
+                guessed += guess[i]
+
     def enter_action(s):
         row = gw.get_current_row()
         print("row " + str(row))
@@ -43,6 +61,11 @@ def wordle():
 
         # IF YOU RUN OUT OF ROWS, YOU LOSE
         elif (row + 1 == N_ROWS) :
+
+            # CHECK LETTERS TO GIVE SOME HOPE OF 
+            # INTELLIGENCE DESPITE AN EMBARRASING LOSS
+            check_letters(row, guess)
+
             gw.show_message("You Lose. The word was " + word + ".")
 
         # THIS COMPLETES CHECKPOINT TWO BY DISPLAYING
@@ -50,22 +73,8 @@ def wordle():
         elif guess.lower() in FIVE_LETTER_WORDS :
             gw.show_message("Good guess! That is in the word list.")
 
-            # INITIATE A STRING OF ALL GUESSED LETTERS
-            guessed = ""
-
-            # CHECK FOR LETTERS IN THE CORRECT PLACE
-            # AND TURN THEM GREEN
-            for i in range(0, N_COLS) :
-                if guess[i] == word[i]:
-                    gw.set_square_color(row,i,CORRECT_COLOR)
-                    guessed += guess[i]
-
-            # CHECK FOR CORRECT LETTERS IN THE WRONG
-            # PLACE AND TURN THEM YELLOW
-            for i in range(0, N_COLS) :
-                if (guess[i] in word) and (guess[i] not in guessed):
-                    gw.set_square_color(row,i,PRESENT_COLOR)
-                    guessed += guess[i]
+            # CHECK LETTERS
+            check_letters(row, guess)
 
             # MOVE TO NEXT ROW
             gw.set_current_row(row + 1)
