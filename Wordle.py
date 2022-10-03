@@ -34,7 +34,7 @@ def wordle():
         for i in range(0, N_COLS) :
             if (guess[i] in word) and (guess[i] not in guessed):
                 gw.set_square_color(row,i,PRESENT_COLOR)
-                if word.count(guess[i]) == 1:
+                if word.count(guess[i]) == 1 and (guess[i] != word[i]):
                     guessed += guess[i]
 
     def enter_action(s):
