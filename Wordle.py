@@ -43,28 +43,21 @@ def wordle():
 
         # IF YOU RUN OUT OF ROWS, YOU LOSE
         elif (row + 1 == N_ROWS) :
-            gw.show_message("You Lose")
+            gw.show_message("You Lose. The word was " + word + ".")
 
         # THIS COMPLETES CHECKPOINT TWO BY DISPLAYING
         # WEATHER THE WORD IS IN THE WORD BANK OR NOT
         elif guess.lower() in FIVE_LETTER_WORDS :
             gw.show_message("Good guess! That is in the word list.")
 
-            '''
-            grade = ""
             for i in range(0, N_COLS) :
                 if guess[i] == word[i]:
                     gw.set_square_color(row,i,CORRECT_COLOR)
-                    for j in range(0, N_COLS) :
-                        if guess[i] == grade[j] :
-                            grade += " "
-                        else :
-                            grade += guess[j]
 
             for i in range(0, N_COLS) :
-                if (grade[i] in word):
+                if (guess[i] in word):
                     gw.set_square_color(row,i,PRESENT_COLOR)
-            '''
+            
 
             # MOVE TO NEXT ROW
             gw.set_current_row(row + 1)
