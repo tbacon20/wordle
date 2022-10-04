@@ -27,7 +27,7 @@ def wordle():
             if guess[i] == word[i]:
                 gw.set_square_color(row,i,CORRECT_COLOR)
                 gw.set_key_color(guess[i], CORRECT_COLOR)
-                if word.count(guess[i]) == 1:
+                if (word.count(guess[i]) == 1) or (word.count(guess[i]) > 2):
                     guessed += guess[i]
 
         # CHECK FOR CORRECT LETTERS IN THE WRONG
@@ -73,6 +73,8 @@ def wordle():
             # ALL LETTERS WILL TURN GREEN
             for i in range(0, N_COLS) :
                 gw.set_square_color(row,i,CORRECT_COLOR)
+                gw.set_key_color(guess[i], CORRECT_COLOR)
+
 
         # IF YOU RUN OUT OF ROWS, YOU LOSE
         elif (row + 1 == N_ROWS) :
