@@ -53,7 +53,6 @@ def wordle():
 
     def enter_action(s):
         row = gw.get_current_row()
-        print("row " + str(row))
         guess = ""
 
         # THIS CONVERTS THE GUESS INTO A WORD AND 
@@ -69,7 +68,7 @@ def wordle():
 
         # IF THE WORD IS GUESSED, YOU WIN
         elif word == guess :
-            gw.show_message("YOU WIN")
+            gw.show_message("YOU WIN. Done in " + str(row + 1) + "/" + str(N_ROWS) + " rows.")
 
             # ALL LETTERS WILL TURN GREEN
             for i in range(0, N_COLS) :
