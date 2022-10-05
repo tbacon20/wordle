@@ -14,8 +14,9 @@ def wordle():
     # THIS ASSIGNES A RANDOM WORD
     word = FIVE_LETTER_WORDS[random.randint(0, len(FIVE_LETTER_WORDS) - 1)]
     word = word.upper()
+    
     # THIS CAN BE USED FOR TESTING
-    print(word)
+    # print(word)
 
     def check_letters(row, guess) :
         # INITIATE A STRING OF ALL GUESSED LETTERS
